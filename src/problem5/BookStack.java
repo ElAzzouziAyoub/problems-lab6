@@ -3,31 +3,40 @@ package problem5;
 import java.util.LinkedList;
 
 public class BookStack {
-    private LinkedList<Book> stack;
+  private LinkedList<Book> stack;
 
-    public BookStack() {
+  public BookStack() {
+    this.stack = new LinkedList<Book>();
+  }
 
+  public void push(Book book) {
+    this.stack.addFirst(book);
+  }
+
+  public Book pop() {
+    if (!this.isEmpty()) {
+      Book book = this.stack.getFirst();
+      this.stack.removeFirst();
+      return book;
     }
+    return null;
+  }
 
-    public void push(Book book) {
-
+  public Book peek() {
+    if (!this.isEmpty()) {
+      return this.stack.getFirst();
     }
+    return null;
+  }
 
-    public Book pop() {
-        // code here and don't to test if it's empty
+  public boolean isEmpty() {
+    return this.stack.isEmpty();
+  }
+
+  public void display() {
+    System.out.println("Stack contents (top to bottom):");
+    for (Book book : this.stack) {
+      System.out.println(book);
     }
-
-    public Book peek() {
-        // code here and don't to test if it's empty
-    }
-
-    public boolean isEmpty() {
-        return stack.isEmpty();
-    }
-
-    public void display() {
-        System.out.println("Stack contents (top to bottom):");
-
-    }
+  }
 }
-
